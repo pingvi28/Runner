@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
-
-    public PlayerMovement movement;
+    public CapsMovement movement;
 
     void OnCollisionEnter (Collision collisionInfo) 
     {
@@ -13,3 +12,4 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 }
+
