@@ -28,6 +28,11 @@ public class CapsMovement : MonoBehaviour
 
     private void FixedUpdate() {
         PlayerMove();
+
+        if (rb.position.y < -1f)
+        {
+            FindObjectOfType<GameManager>().EndGame();
+        }
     }
 
     public void Move()   // метод: нужно ли двигаться
@@ -46,18 +51,18 @@ public class CapsMovement : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))   // двигаемся влево
             {
-                dirZ = speedMove;
+                dirZ = - speedMove;
             }
             else if (Input.GetMouseButtonDown(1))   // двигаемся вправо
             {
-                dirZ = - speedMove;
+                dirZ =  speedMove;
             }
 
             NeedToGo = false;
         }
 
-        moveVector.x = distance;
-        moveVector.z = dirZ * 0.5f;
+        moveVector.z = distance;
+        moveVector.x = dirZ * 0.5f;
         moveVector.y = gravityForce; //расчет гравитации (прыжок)
         pl_controller.Move(moveVector * Time.deltaTime);
     }
